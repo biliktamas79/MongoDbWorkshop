@@ -1,22 +1,8 @@
-﻿using System;
-using MongoDB.Bson;
-using MongoDB.Driver;
-
 namespace MongoDbWorkshop
 {
-    class Program
+    public static class BsonDocumentDemo
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-
-            var client = new MongoClient("mongodb://bpvdeva2web1:27017");
-            var database = client.GetDatabase("demo");
-
-            BsonDocumentDemo(database).Wait();
-        }
-
-        private static void BsonDocumentDemo(IMongoDatabase database)
+        public static void Insert(IMongoDatabase database)
         {
             var collection = database.GetCollection<BsonDocument>("fuszenecker");
 
@@ -32,7 +18,15 @@ namespace MongoDbWorkshop
                     }}
             };
 
-            collection.InsertOneAsync(document);
+            for (int x = 0; x < 100; x++)
+            {
+            collection.InsertOne(document);
+            }
+        }
+
+        public static void Query(IMongoDatabase database)
+        {
+            var collection = database.GetCollection<BsonDocument>("fuszenecker");
 
             var result = collection.Find(new BsonDocument()).FirstOrDefault();
             Console.WriteLine(result.ToString());
