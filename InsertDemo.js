@@ -11,7 +11,11 @@ var insertDocument = function (db) {
             objects.push({
                 i: "Index " + i,
                 value: i,
-                created: new Date()
+                created: new Date(),
+                createdBy: {
+                    name: "Fuszenecker Róbert",
+                    phone: "+36-90-400-400"
+                }
             });
         }
         collection.insertMany(objects, function (error, result) {
