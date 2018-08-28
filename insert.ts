@@ -11,8 +11,8 @@ const insertDocument = (db: Db) => {
         // Insert some documents
         var objects = []
 
-        // Create array of 10 docs
-        for (let i = 0; i < 10; ++i) {
+        // Create array of 25 docs
+        for (let i = 0; i < 25; ++i) {
             objects.push({
                 i: "Index " + i,
                 value: i,
