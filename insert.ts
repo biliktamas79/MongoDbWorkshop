@@ -9,11 +9,11 @@ const insertDocument = (db: Db) => {
         const collection = db.collection("fuszenecker");
 
         // Insert some documents
-        var objects = []
+        var objects = new Array<any>();
 
         // Create array of 25 docs
         for (let i = 0; i < 25; ++i) {
-            objects.push({
+            const obj = {
                 i: "Index " + i,
                 value: i,
                 created: new Date(),
@@ -21,7 +21,9 @@ const insertDocument = (db: Db) => {
                     name: "Fuszenecker Róbert",
                     phone: "+36-90-400-400"
                 }
-            })
+            }
+
+            objects.push(obj)
         }
 
         // Bulk insert documents

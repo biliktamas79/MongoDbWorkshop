@@ -4,9 +4,10 @@
   "description": "Demo MongoDB application",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/tsc index.ts",
+    "build": "./node_modules/.bin/tsc -p .",
     "start": "npm run build && node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --nolazy --inspect-brk=9229 out/index.js"
   },
   "repository": {
     "type": "git",
