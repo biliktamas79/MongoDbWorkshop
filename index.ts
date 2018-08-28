@@ -21,14 +21,29 @@ MongoClient.connect(url,
 
             const db = client.db(dbName)
 
+            // Clean up the database
             deleteAll(db)
+
+            // Then fill it with test data
             .then(() => insertDocument(db))
+
+            // Create index on them
             .then(() => createIndex(db))
+
+            // Some example query
             .then(() => queryAll(db))
             .then(() => queryFilter1(db))
             .then(() => queryFilter2(db))
+
+            // Close the connection
             .then(() => {
                 console.log("\n==== Closing connection ====")
+                client.close()
+            })
+
+            // In case of an error...
+            .catch((error) => {
+                console.log(`\n==== Closing connection with error: ${error} ====`)
                 client.close()
             })
         }
