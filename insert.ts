@@ -1,4 +1,4 @@
-import { Db, MongoError } from "mongodb"
+import { Db } from "mongodb"
 import { Promise } from "es6-promise"
 
 const insertDocument = (db: Db) => {
@@ -14,7 +14,7 @@ const insertDocument = (db: Db) => {
         // Create array of 25 docs
         for (let i = 0; i < 25; ++i) {
             const obj = {
-                i: "Index " + i,
+                i: "Index " + i % 10,
                 value: i,
                 created: new Date(),
                 createdBy: {

@@ -1,8 +1,9 @@
-import { MongoClient, Db } from "mongodb"
+import { MongoClient } from "mongodb"
 import { insertDocument } from "./insert"
 import { queryAll, queryFilter2, queryFilter1 } from "./query"
 import { deleteAll } from "./delete";
 import { createIndex } from "./indexField";
+import { aggregate, mapreduce, distinct } from "./aggregation";
 
 // Connection URL
 const url = "mongodb://bpvdeva2web1.dlgroup.com:27017"
@@ -34,6 +35,11 @@ MongoClient.connect(url,
             .then(() => queryAll(db))
             .then(() => queryFilter1(db))
             .then(() => queryFilter2(db))
+
+            // Aggregation and map-reduce
+            .then(() => distinct(db))
+            .then(() => aggregate(db))
+            .then(() => mapreduce(db))
 
             // Close the connection
             .then(() => {
