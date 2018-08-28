@@ -64,10 +64,16 @@ const mapreduce = (db: Db) => {
                 },
                 // Reduce
                 (key, values) => values.reduce((accumulator, current) => accumulator + current),
-                { out: "reduced" }
+                { out: "fuszenecker-reduced" }
             )
-            .then(() => resolve(true))
-            .catch(error => reject(error))
+            .then(() => {
+                console.log("Collection 'fuszenecker-reduced' created.")
+                resolve(true)
+            })
+            .catch(error => {
+                console.log(error)
+                reject(error)
+            })
     });
 }
 
