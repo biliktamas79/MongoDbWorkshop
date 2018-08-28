@@ -1,8 +1,9 @@
 import { MongoClient, Db } from "mongodb"
-import { insertDocument } from "./InsertDemo"
+import { insertDocument } from "./insert"
+import { queryAll } from "./query"
 
 // Connection URL
-const url = "mongodb://bpvdeva2web1:27017"
+const url = "mongodb://bpvdeva2web1.dlgroup.com:27017"
 
 // Database Name
 const dbName = "demo"
@@ -19,8 +20,7 @@ MongoClient.connect(url,
             const db = client.db(dbName)
 
             insertDocument(db)
-            .then((result) => {
-                client.close()
-            })
+            .then(() => queryAll(db))
+            .then(() => client.close())
         }
     });

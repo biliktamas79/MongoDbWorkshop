@@ -7,7 +7,8 @@ var insertDocument = function (db) {
         var collection = db.collection("fuszenecker");
         // Insert some documents
         var objects = [];
-        for (var i = 0; i < 100; ++i) {
+        // Create array of 10 docs
+        for (var i = 0; i < 10; ++i) {
             objects.push({
                 i: "Index " + i,
                 value: i,
@@ -18,6 +19,7 @@ var insertDocument = function (db) {
                 }
             });
         }
+        // Bulk insert documents
         collection.insertMany(objects, function (error, result) {
             if (error) {
                 reject(error);
