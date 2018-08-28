@@ -1,6 +1,6 @@
 import { MongoClient, Db } from "mongodb"
 import { insertDocument } from "./insert"
-import { queryAll } from "./query"
+import { queryAll, queryFilter } from "./query"
 
 // Connection URL
 const url = "mongodb://bpvdeva2web1.dlgroup.com:27017"
@@ -15,12 +15,17 @@ MongoClient.connect(url,
         if (err) {
             console.log("Error: " + err.message)
         } else {
-            console.log("Connected successfully to server.")
+            console.log("==== Connected successfully to server. ====")
 
             const db = client.db(dbName)
 
+            
             insertDocument(db)
             .then(() => queryAll(db))
-            .then(() => client.close())
+            .then(() => queryFilter(db))
+            .then(() => {
+                console.log("\n==== Closing connection ====")
+                client.close()
+            })
         }
     });
