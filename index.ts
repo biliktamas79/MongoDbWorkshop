@@ -29,17 +29,17 @@ MongoClient.connect(url,
             .then(() => insertDocument(db))
 
             // Create index on them
-            .then(() => createIndex(db))
+            // .then(() => createIndex(db))
 
-            // Some example query
-            .then(() => queryAll(db))
-            .then(() => queryFilter1(db))
-            .then(() => queryFilter2(db))
+            // // Some example query
+            // .then(() => queryAll(db))
+            // .then(() => queryFilter1(db))
+            // .then(() => queryFilter2(db))
 
-            // Aggregation and map-reduce
-            .then(() => distinct(db))
-            .then(() => aggregate(db))
-            .then(() => mapreduce(db))
+            // // Aggregation and map-reduce
+            // .then(() => distinct(db))
+            // .then(() => aggregate(db))
+            // .then(() => mapreduce(db))
 
             // Close the connection
             .then(() => {

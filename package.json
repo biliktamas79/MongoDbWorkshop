@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/tsc -p .",
-    "start": "npm run build && node index.js",
+    "start": "npm run build && node out\\index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "node --nolazy --inspect-brk=9229 out/index.js"
   },
