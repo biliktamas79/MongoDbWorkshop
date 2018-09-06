@@ -1,6 +1,5 @@
 import { Db, MongoError } from "mongodb"
 import { Promise } from "es6-promise"
-import { rejects } from "assert";
 
 const queryAll = (db: Db) => {
     return new Promise<boolean>((resolve, reject) => {
